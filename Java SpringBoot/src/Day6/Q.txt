@@ -1,0 +1,21 @@
+13. Hands-On Exercise (Project Work)
+
+Part A: Encapsulate Task (improve your Day 5 code)
+
+Add constant STATUS_DONE and use it in markCompleted()
+Add getters: getId(), getTitle(), getStatus()
+Add setTitle(String title) that throws IllegalArgumentException if the title is null or blank. Call it from the constructor.
+
+Part B: Inheritance
+
+Create BugTask extends Task with an extra private String severity (e.g., “HIGH”). Pass the parent values through super(...).
+Override displayTask(): call super.displayTask(), then print the severity.
+Create FeatureTask extends Task with private int storyPoints, and override displayTask() the same way.
+
+Part C: Polymorphism (TaskPolymorphismDemo)
+
+Build a Task[] holding one plain Task, one BugTask, and one FeatureTask.
+Loop and call displayTask() on each.
+Test validation: wrap new Task(9, " ") in a try/catch (IllegalArgumentException e) and print the message.
+
+Bonus: use instanceof BugTask bug to print only the severity of bug tasks.

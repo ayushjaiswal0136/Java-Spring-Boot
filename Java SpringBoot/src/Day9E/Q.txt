@@ -1,0 +1,45 @@
+Part A (Easy): Unique emails
+In UniqueEmails.java, start with this list:
+
+java
+List<String> emails = List.of(
+    "a@x.com", "b@x.com", "a@x.com", "c@x.com", "b@x.com");
+
+Print the unique emails in the original order, then print how many duplicates were removed. Use a Set and the right implementation for order.
+
+Part B (Medium): Word frequency
+In WordFrequency.java, count the words in:
+
+java
+String sentence = "the quick brown fox jumps over the lazy dog the end";
+
+Print each word with its count, then print the most frequent word. Use a Map and getOrDefault, and no extra libraries.
+
+Part C (Medium): Support ticket queue
+In TicketQueue.java, simulate a help desk:
+
+Add 4 ticket names to a Queue<String>.
+Process them one at a time in a loop with while (!queue.isEmpty()), printing Handling: <name>.
+Add one more ticket mid-processing (after the second one), and check it’s handled last.
+Print Queue is empty at the end.
+
+Part D (Medium): Undo history
+In UndoHistory.java, use a Deque<String> as a stack: push 3 text edits, then pop them one by one printing Undo: .... Then call pop() on the empty stack and write down which exception you get (try peek() as well and note the difference).
+
+Part E (Debugging): Fix this code
+
+java
+List<Integer> scores = new ArrayList<>(List.of(40, 85, 30, 92, 55));
+for (Integer score : scores) {
+    if (score < 50) {
+        scores.remove(score);
+    }
+}
+System.out.println(scores);
+
+Run it, read the exception, explain the root cause in one sentence, and fix it so the output is [85, 92, 55].
+
+Part F (Generics): Your own generic class
+Create Stack2.java, a tiny generic stack Stack2<T> backed by an ArrayList<T> with push(T item), pop() (throw IllegalStateException("Stack is empty") when empty), peek(), and size(). Test it with Stack2<String> and Stack2<Integer>.
+
+Bonus: write a generic method static <T> List<T> removeDuplicates(List<T> input) that returns a new list without duplicates, preserving order.

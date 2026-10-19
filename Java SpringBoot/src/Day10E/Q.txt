@@ -1,0 +1,48 @@
+13. Hands-On Exercises (all in package day10, using only today’s concepts)
+
+Part A (Easy): Natural ordering
+Create Student with name, marks (int), age (int), getters, and a toString. Make it Comparable<Student> ordered by marks, highest first. Build 5 students (include two with the same marks), sort with Collections.sort, and print.
+
+Part B (Medium): Many orderings
+Using the same Student, sort the list with Comparators and print each result:
+
+by name (alphabetical)
+by age ascending, then marks descending
+by marks descending, then name alphabetical (the tie-breaker matters here)
+
+No hand-written subtraction anywhere.
+
+Part C (Medium): Lambda toolbox
+Starting from List<String> words = new ArrayList<>(List.of("sun", "moon", "star", "sky", "galaxy", "comet"));:
+
+removeIf words shorter than 4 letters
+replaceAll to uppercase
+sort by length, then alphabetically
+print each word using forEach with a method reference
+
+Part D (Functional interfaces): A tiny calculator
+
+Create @FunctionalInterface interface Operation { double apply(double a, double b); }.
+Store four lambdas (+, -, *, /) in a Map<String, Operation>.
+Loop over the keys "+", "-", "*", "/" and print results for (20, 4).
+The division lambda must throw IllegalArgumentException("Cannot divide by zero") when b == 0. Test it inside try/catch.
+
+Part E (Debugging): Find and fix both
+
+java
+// Snippet 1
+List<Integer> nums = new ArrayList<>(List.of(5, Integer.MIN_VALUE, 10, -3));
+nums.sort((a, b) -> a - b);
+System.out.println(nums);
+
+// Snippet 2
+int count = 0;
+List<String> names = List.of("Amy", "Bob", "Cara");
+names.forEach(n -> { if (n.length() > 3) count++; });
+
+For each: run it, copy the actual error or wrong output, explain the root cause in one sentence, and fix it. Snippet 1 must print [-2147483648, -3, 5, 10].
+
+Part F (Generics + lambdas): Reusable filter
+Write static <T> List<T> filter(List<T> items, Predicate<T> condition). Use it once with List<Integer> (keep even numbers) and once with List<String> (keep words starting with “s”).
+
+Bonus: write static <T, R> List<R> transform(List<T> items, Function<T, R> mapper), and use it to turn List<String> into List<Integer> of their lengths. (You’ve just written, in simple form, what stream().map(...) does tomorrow.)
