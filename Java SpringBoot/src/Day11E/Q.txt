@@ -1,0 +1,74 @@
+13. Hands-On Exercises (all in package day11, using only today’s concepts)
+
+Part A (Easy): Number crunching
+In NumberPractice.java, use List<Integer> nums = List.of(4, 9, 16, 25, 36, 7, 12); and print, using streams only:
+
+the sum of numbers greater than 10 (expected 89)
+the average of all numbers with 2 decimals (expected 15.57)
+the largest and smallest numbers (expected 36 and 4), using Optional safely
+all numbers as one string joined by " | " (expected 4 | 9 | 16 | 25 | 36 | 7 | 12)
+
+Part B (Medium): Bookstore report
+Create Book (title, author, price, year, genre, with getters and toString returning the title) and BookReport.java. Use this data:
+
+Title	Author	Price	Year	Genre
+Clean Code	Robert Martin	450	2008	Programming
+Effective Java	Joshua Bloch	520	2018	Programming
+Dune	Frank Herbert	350	1965	SciFi
+Neuromancer	William Gibson	300	1984	SciFi
+Atomic Habits	James Clear	400	2018	SelfHelp
+Deep Work	Cal Newport	380	2016	SelfHelp
+
+Print, using streams:
+
+titles of books published after 2015, cheapest first
+number of books per genre (sorted by genre, use TreeMap)
+average price per genre
+the most expensive book (handle the Optional safely)
+two groups: price < 400 and price >= 400 (use partitioningBy)
+whether any book is by "Cal Newport"
+
+Part C (Medium): Word statistics
+In WordStats.java, take "the quick brown fox jumps over the lazy dog the end". Split it into words, then using streams:
+
+print the number of distinct words
+build a frequency map with groupingBy(Function.identity(), counting()) and print it
+find the most frequent word (expected the, appearing 3 times). Hint: stream over entrySet() and use max with Map.Entry.comparingByValue()
+group words by length into a TreeMap and print it
+
+Part D (Optional): User directory
+In UserDirectory.java, create a Map<Integer, String> of id → email with 3 entries. Write Optional<String> findEmail(int id) using Optional.ofNullable. Then:
+
+print the part of the email after the @, or "no email", using map and orElse
+use orElseThrow with an IllegalArgumentException for an unknown id, inside try/catch
+use ifPresentOrElse once
+prove the orElse vs orElseGet difference with a default-producing method that prints a message
+
+Part E (Debugging): Fix all three
+
+java
+// Snippet 1
+Stream<String> s = Stream.of("a", "b", "c");
+long n = s.count();
+List<String> again = s.toList();
+
+// Snippet 2
+List<String> words = List.of("go", "java", "go", "rust");
+Map<String, Integer> lengths = words.stream()
+        .collect(Collectors.toMap(w -> w, String::length));
+
+// Snippet 3
+List<Integer> evens = Stream.of(1, 2, 3, 4).filter(n -> n % 2 == 0).toList();
+evens.add(6);
+
+For each: run it, copy the exact exception, write the root cause in one sentence, and fix it.
+
+Part F (DTO mapping): Customer service
+Create Customer (id, name, email, active, city) and CustomerDto (name, city, with toString). With 6 customers of your choice (mix of active and inactive, at least 2 cities):
+
+build a List<CustomerDto> of active customers, sorted by name
+print the number of customers per city (sorted by city)
+write Optional<Customer> findByEmail(List<Customer> list, String email) using a stream, and test both a found and a missing email
+
+Bonus (flatMap): given List<List<String>> teams = List.of(List.of("Amy", "Bob"), List.of("Cara"), List.of("Dan", "Eve", "Fay"));, print all names in uppercase, sorted, and the total count, in one stream pipeline each.
+
