@@ -1,0 +1,11 @@
+app:
+  name: task-manager-demo
+  port: 8080
+  debug: false
+db:
+  url: jdbc:postgresql://localhost:5432/tasks
+  password: changeme
+features:
+  - registration
+  - comments
+  - search
